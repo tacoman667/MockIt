@@ -1,0 +1,8 @@
+This project is mainly my way of enhancing my automated testing experience both from blogs I read and my own crazy thoughts.
+
+Right now Testable<T> will only work for constructor based dependancy injection patterns but I hope to enhance it soon with property injection as well.
+
+The BDDStyleTestingMethodExtensions class is really just trying to wrap asserts into more of a meaningful way so that while testing I can do things like:
+result.ShouldNotBeNull();
+or
+result.Count.ShouldEqual(4);
