@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="61a9457b-48a6-43f3-b18f-50eeb5bdb893" name="jrhard@VDIX-1000000077 2012-02-21 15:43:12" runUser="ADMINISTAFF\jrhard" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="d5530081-ac9a-467b-9df6-ce60ba9aa7bb">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="jrhard_VDIX-1000000077 2012-02-21 15_43_12">
+      <DeploymentItem filename="C:\projects\Testable-T-\TestProject1\Moq.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2012-02-21T15:43:12.5515528-06:00" queuing="2012-02-21T15:43:12.6035528-06:00" start="2012-02-21T15:43:12.6305528-06:00" finish="2012-02-21T15:43:13.0915528-06:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="6" executed="6" passed="6" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="it_should_create_the_object_of_the_class" storage="c:\projects\testable-t-\testproject1\bin\debug\testproject1.dll" id="a6d3e4cf-910b-b5be-aba3-2349a9c7955d">
+      <TestCategory>
+        <TestCategoryItem TestCategory="unit" />
+      </TestCategory>
+      <Execution id="cad10ef4-22f1-433b-ab17-9bcca8f528a9" />
+      <TestMethod codeBase="C:/projects/Testable-T-/TestProject1/bin/Debug/TestProject1.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.GivenThatTheTestableWrapperIsInstantiated, TestProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="it_should_create_the_object_of_the_class" />
+    </UnitTest>
+    <UnitTest name="it_should_add_objects_to_the_dependancies_propery_of_the_wrapper" storage="c:\projects\testable-t-\testproject1\bin\debug\testproject1.dll" id="5e73b3e6-1ef2-360f-a8f7-f630997daae2">
+      <TestCategory>
+        <TestCategoryItem TestCategory="unit" />
+      </TestCategory>
+      <Execution id="d850669d-ae4e-48fc-88e7-1f296deeccd6" />
+      <TestMethod codeBase="C:/projects/Testable-T-/TestProject1/bin/Debug/TestProject1.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.GivenThatTheTestableWrapperIsInstantiated, TestProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="it_should_add_objects_to_the_dependancies_propery_of_the_wrapper" />
+    </UnitTest>
+    <UnitTest name="it_should_have_1_dependancy_of_type_IFoo" storage="c:\projects\testable-t-\testproject1\bin\debug\testproject1.dll" id="409863c6-b121-d56f-ca9a-7d1fdf530808">
+      <TestCategory>
+        <TestCategoryItem TestCategory="unit" />
+      </TestCategory>
+      <Execution id="b4395cb3-d181-4723-8c72-a24d35719553" />
+      <TestMethod codeBase="C:/projects/Testable-T-/TestProject1/bin/Debug/TestProject1.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.GivenThatTheTestableWrapperIsInstantiated, TestProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="it_should_have_1_dependancy_of_type_IFoo" />
+    </UnitTest>
+    <UnitTest name="it_should_fill_foo_property_with_a_user_defined_object" storage="c:\projects\testable-t-\testproject1\bin\debug\testproject1.dll" id="f075725f-07ef-7a40-4352-7be92eedb2cd">
+      <TestCategory>
+        <TestCategoryItem TestCategory="unit" />
+      </TestCategory>
+      <Execution id="ca901292-d49c-4883-a6ab-2bdcb5d85d8e" />
+      <TestMethod codeBase="C:/projects/Testable-T-/TestProject1/bin/Debug/TestProject1.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.GivenThatTheTestableWrapperIsInstantiated, TestProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="it_should_fill_foo_property_with_a_user_defined_object" />
+    </UnitTest>
+    <UnitTest name="it_should_create_the_object_of_type_Foo" storage="c:\projects\testable-t-\testproject1\bin\debug\testproject1.dll" id="6428faaa-0e33-526e-d13d-248c2beb6c58">
+      <TestCategory>
+        <TestCategoryItem TestCategory="unit" />
+      </TestCategory>
+      <Execution id="2b92535f-ae51-4f26-9b44-5b02c6879141" />
+      <TestMethod codeBase="C:/projects/Testable-T-/TestProject1/bin/Debug/TestProject1.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.GivenThatTheTestableWrapperIsInstantiated, TestProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="it_should_create_the_object_of_type_Foo" />
+    </UnitTest>
+    <UnitTest name="it_should_fill_foo_property_with_a_default_mock_proxy_object" storage="c:\projects\testable-t-\testproject1\bin\debug\testproject1.dll" id="19309f64-bdb7-7575-8e4f-d51d822dfe3b">
+      <TestCategory>
+        <TestCategoryItem TestCategory="unit" />
+      </TestCategory>
+      <Execution id="da4cbec7-f81c-4141-8565-04d9cf16967a" />
+      <TestMethod codeBase="C:/projects/Testable-T-/TestProject1/bin/Debug/TestProject1.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TestProject1.GivenThatTheTestableWrapperIsInstantiated, TestProject1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="it_should_fill_foo_property_with_a_default_mock_proxy_object" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="19309f64-bdb7-7575-8e4f-d51d822dfe3b" executionId="da4cbec7-f81c-4141-8565-04d9cf16967a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="409863c6-b121-d56f-ca9a-7d1fdf530808" executionId="b4395cb3-d181-4723-8c72-a24d35719553" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5e73b3e6-1ef2-360f-a8f7-f630997daae2" executionId="d850669d-ae4e-48fc-88e7-1f296deeccd6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6428faaa-0e33-526e-d13d-248c2beb6c58" executionId="2b92535f-ae51-4f26-9b44-5b02c6879141" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a6d3e4cf-910b-b5be-aba3-2349a9c7955d" executionId="cad10ef4-22f1-433b-ab17-9bcca8f528a9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f075725f-07ef-7a40-4352-7be92eedb2cd" executionId="ca901292-d49c-4883-a6ab-2bdcb5d85d8e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="da4cbec7-f81c-4141-8565-04d9cf16967a" testId="19309f64-bdb7-7575-8e4f-d51d822dfe3b" testName="it_should_fill_foo_property_with_a_default_mock_proxy_object" computerName="VDIX-1000000077" duration="00:00:00.1716851" startTime="2012-02-21T15:43:12.6405528-06:00" endTime="2012-02-21T15:43:12.9895528-06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="da4cbec7-f81c-4141-8565-04d9cf16967a">
+    </UnitTestResult>
+    <UnitTestResult executionId="b4395cb3-d181-4723-8c72-a24d35719553" testId="409863c6-b121-d56f-ca9a-7d1fdf530808" testName="it_should_have_1_dependancy_of_type_IFoo" computerName="VDIX-1000000077" duration="00:00:00.0008315" startTime="2012-02-21T15:43:13.0035528-06:00" endTime="2012-02-21T15:43:13.0135528-06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b4395cb3-d181-4723-8c72-a24d35719553">
+    </UnitTestResult>
+    <UnitTestResult executionId="d850669d-ae4e-48fc-88e7-1f296deeccd6" testId="5e73b3e6-1ef2-360f-a8f7-f630997daae2" testName="it_should_add_objects_to_the_dependancies_propery_of_the_wrapper" computerName="VDIX-1000000077" duration="00:00:00.0012732" startTime="2012-02-21T15:43:13.0225528-06:00" endTime="2012-02-21T15:43:13.0265528-06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d850669d-ae4e-48fc-88e7-1f296deeccd6">
+    </UnitTestResult>
+    <UnitTestResult executionId="2b92535f-ae51-4f26-9b44-5b02c6879141" testId="6428faaa-0e33-526e-d13d-248c2beb6c58" testName="it_should_create_the_object_of_type_Foo" computerName="VDIX-1000000077" duration="00:00:00.0043014" startTime="2012-02-21T15:43:13.0345528-06:00" endTime="2012-02-21T15:43:13.0425528-06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2b92535f-ae51-4f26-9b44-5b02c6879141">
+    </UnitTestResult>
+    <UnitTestResult executionId="cad10ef4-22f1-433b-ab17-9bcca8f528a9" testId="a6d3e4cf-910b-b5be-aba3-2349a9c7955d" testName="it_should_create_the_object_of_the_class" computerName="VDIX-1000000077" duration="00:00:00.0039403" startTime="2012-02-21T15:43:13.0525528-06:00" endTime="2012-02-21T15:43:13.0605528-06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="cad10ef4-22f1-433b-ab17-9bcca8f528a9">
+    </UnitTestResult>
+    <UnitTestResult executionId="ca901292-d49c-4883-a6ab-2bdcb5d85d8e" testId="f075725f-07ef-7a40-4352-7be92eedb2cd" testName="it_should_fill_foo_property_with_a_user_defined_object" computerName="VDIX-1000000077" duration="00:00:00.0047832" startTime="2012-02-21T15:43:13.0655528-06:00" endTime="2012-02-21T15:43:13.0725528-06:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ca901292-d49c-4883-a6ab-2bdcb5d85d8e">
+    </UnitTestResult>
+  </Results>
+</TestRun>

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace System
 {
@@ -90,19 +89,6 @@ namespace System
             else Assert.IsTrue(context.Contains(text), error);
         }
 
-        public static void ShouldContain<T>(this IEnumerable<T> context, T item, string error = null)
-        {
-            var isFound = false;
-            foreach (var itm in context)
-            {
-                if (itm.Equals(item))
-                    isFound = true;
-                if (isFound)
-                    break;
-            }
-            Assert.IsTrue(isFound);
-        }
-
         /// <summary>
         /// Tests is the value does not contain a string fragment.
         /// </summary>
@@ -113,6 +99,40 @@ namespace System
         {
             if (error == null) Assert.IsFalse(context.Contains(text));
             else Assert.IsFalse(context.Contains(text), error);
+        }
+
+        /// <summary>
+        /// Checks if the object is of requested type.
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="type"></param>
+        /// <param name="error"></param>
+        public static void ShouldBeInstanceOf(this object context, object type, String error = null)
+        {
+            var t = type as Type;
+            Assert.IsInstanceOfType(context, t, error, t);
+        }
+
+        /// <summary>
+        /// Tests that the integer is greater than the minimum value.
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="minimum"></param>
+        /// <param name="error"></param>
+        public static void ShouldBeGreaterThan(this int context, int minimum, String error = null)
+        {
+            Assert.IsTrue(context > minimum, error);
+        }
+
+        /// <summary>
+        /// Tests that the integer is less than the maximum value.
+        /// </summary>
+        /// <param name="context"></param>
+        /// <param name="minimum"></param>
+        /// <param name="error"></param>
+        public static void ShouldBeLessThan(this int context, int maximum, String error = null)
+        {
+            Assert.IsTrue(context < maximum, error);
         }
     }
 }

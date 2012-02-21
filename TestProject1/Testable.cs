@@ -7,29 +7,44 @@ namespace TestProject1
 {
     public class Testable<T> where T : class
     {
-        public T Instance { get; set; }
+        public T Instance { get; private set; }
+
+        public Dictionary<Type, Object> Dependancies { get; private set; }
 
         public Testable() : this(null) { }
 
         public Testable(params object[] dependancies)
         {
+            // Protects against null errors
+            this.Dependancies = new Dictionary<Type, object>();
+
             // Inject dependacies for any constructors
-            var ctor = GetConstructorContainingParameters();
+            var ctor = GetConstructor();
             var objects = CreateInstancesOfConstructorParameters(ctor.GetParameters(), dependancies ?? new object[0]);
             Instance = (T)ctor.Invoke(objects.ToArray());
+
+            objects.ToList().ForEach(item =>
+            {
+                Type type = item.GetType();
+                foreach (var i in type.GetInterfaces())
+                {
+                    this.Dependancies.Add(i, item);
+                }
+
+            });
 
             // Inject any dependancies for any property dependancies
             // Not done yet
             //var properties = typeof(T).GetProperties(BindingFlags.Public & BindingFlags.NonPublic);
         }
 
-        private static ConstructorInfo GetConstructorContainingParameters()
+        private static ConstructorInfo GetConstructor()
         {
             // Gets the constructor with the most parameters
             var ctor = typeof(T).GetConstructors().Where(c => c.GetParameters().Count() > 0)
                                                   .OrderByDescending(c => c.GetParameters().Count())
                                                   .FirstOrDefault();
-            return ctor;
+            return ctor ?? typeof(T).GetConstructors().First();
         }
 
         private static IEnumerable<object> CreateInstancesOfConstructorParameters(ParameterInfo[] parameters, object[] dependancies)
@@ -37,7 +52,11 @@ namespace TestProject1
             foreach (var param in parameters)
             {
                 // checks the supplied dependancies array to see if the type was already provided and returns it
-                var dependancy = dependancies.Where(d => d.GetType().GetInterface(param.ParameterType.FullName) != null).FirstOrDefault();
+                Func<Object, string, bool> InterfaceImplimentedCheck = (d, interfaceName) =>
+                {
+                    return d.GetType().GetInterface(interfaceName) != null;
+                };
+                var dependancy = dependancies.Where(d => InterfaceImplimentedCheck(d, param.ParameterType.Name) || InterfaceImplimentedCheck(d, param.ParameterType.FullName)).FirstOrDefault();
                 if (dependancy != null) { yield return dependancy; continue; }
 
 
