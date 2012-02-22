@@ -58,6 +58,20 @@ namespace TestProject1
             Assert.IsTrue(testableClass.Dependancies.ContainsKey(typeof(IFoo)));
         }
 
+        [TestMethod]
+        [TestCategory("unit")]
+        public void it_should_create_mock_for_public_property_dependancy()
+        {
+            var instance = new Testable<FooBar>().Instance;
+            instance.Bar.ShouldNotBeNull();
+        }
+
+        public interface IFooBar { }
+        public class FooBar : IFooBar
+        {
+            public IBar Bar { get; set; }
+        }
+
         public interface IFoo
         {
             String TestMessage { get; set; }

@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Diagnostics;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace System
 {
@@ -10,6 +11,7 @@ namespace System
         /// </summary>
         /// <param name="context"></param>
         /// <param name="error"></param>
+        [DebuggerNonUserCode]
         public static void ShouldBeNull(this Object context, String error = null)
         {
             if (error == null) Assert.IsNull(context);
@@ -21,6 +23,7 @@ namespace System
         /// </summary>
         /// <param name="context"></param>
         /// <param name="error"></param>
+        [DebuggerNonUserCode]
         public static void ShouldNotBeNull(this Object context, String error = null)
         {
             if (error == null) Assert.IsNotNull(context);
@@ -34,6 +37,7 @@ namespace System
         /// <param name="context"></param>
         /// <param name="objectToCompare"></param>
         /// <param name="error"></param>
+        [DebuggerNonUserCode]
         public static void ShouldEqual<T>(this T context, T objectToCompare, String error = null)
         {
             if (error == null) Assert.AreEqual<T>(objectToCompare, context);
@@ -47,6 +51,7 @@ namespace System
         /// <param name="context"></param>
         /// <param name="objectToCompare"></param>
         /// <param name="error"></param>
+        [DebuggerNonUserCode]
         public static void ShouldNotEqual<T>(this T context, T objectToCompare, String error = null)
         {
             if (error == null) Assert.AreNotEqual<T>(objectToCompare, context);
@@ -58,6 +63,7 @@ namespace System
         /// </summary>
         /// <param name="context"></param>
         /// <param name="error"></param>
+        [DebuggerNonUserCode]
         public static void ShouldBeTrue<T>(this T context, String error = null)
         {
             var value = Convert.ToBoolean(context);
@@ -70,6 +76,7 @@ namespace System
         /// </summary>
         /// <param name="context"></param>
         /// <param name="error"></param>
+        [DebuggerNonUserCode]
         public static void ShouldNotBeTrue<T>(this T context, String error = null)
         {
             var value = Convert.ToBoolean(context);
@@ -83,6 +90,7 @@ namespace System
         /// <param name="context"></param>
         /// <param name="text"></param>
         /// <param name="error"></param>
+        [DebuggerNonUserCode]
         public static void ShouldContain(this String context, String text, String error = null)
         {
             if (error == null) Assert.IsTrue(context.Contains(text));
@@ -95,6 +103,7 @@ namespace System
         /// <param name="context"></param>
         /// <param name="text"></param>
         /// <param name="error"></param>
+        [DebuggerNonUserCode]
         public static void ShouldNotContain(this String context, String text, String error = null)
         {
             if (error == null) Assert.IsFalse(context.Contains(text));
@@ -107,6 +116,7 @@ namespace System
         /// <param name="context"></param>
         /// <param name="type"></param>
         /// <param name="error"></param>
+        [DebuggerNonUserCode]
         public static void ShouldBeInstanceOf(this object context, object type, String error = null)
         {
             var t = type as Type;
@@ -119,6 +129,7 @@ namespace System
         /// <param name="context"></param>
         /// <param name="minimum"></param>
         /// <param name="error"></param>
+        [DebuggerNonUserCode]
         public static void ShouldBeGreaterThan(this int context, int minimum, String error = null)
         {
             Assert.IsTrue(context > minimum, error);
@@ -130,6 +141,7 @@ namespace System
         /// <param name="context"></param>
         /// <param name="minimum"></param>
         /// <param name="error"></param>
+        [DebuggerNonUserCode]
         public static void ShouldBeLessThan(this int context, int maximum, String error = null)
         {
             Assert.IsTrue(context < maximum, error);
