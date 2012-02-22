@@ -48,6 +48,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BDDStyleTestingMethodExtensions.cs" />
+    <Compile Include="IMockFactory.cs" />
+    <Compile Include="MoqMockFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Testable.cs" />
     <Compile Include="GivenThatTheTestableWrapperIsInstantiated.cs" />

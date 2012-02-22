@@ -10,11 +10,14 @@ namespace TestProject1
         public T Instance { get; private set; }
 
         public Dictionary<Type, Object> Dependancies { get; private set; }
+        public IMockFactory MockFactory { get; private set; }
 
-        public Testable() : this(null) { }
+        public Testable(IMockFactory mockFactory) : this(mockFactory, null) { }
 
-        public Testable(params object[] dependancies)
+        public Testable(IMockFactory mockFactory, params object[] dependancies)
         {
+            this.MockFactory = mockFactory;
+
             // Protects against null errors
             this.Dependancies = new Dictionary<Type, object>();
 
@@ -164,10 +167,7 @@ namespace TestProject1
         /// <returns>dynamic</returns>
         public dynamic CreateMockObjectFromType(Type type)
         {
-            var mockType = typeof(Moq.Mock<>);
-            var objType = mockType.MakeGenericType(new Type[] { type });
-            dynamic obj = Activator.CreateInstance(objType);
-            return obj;
+            return MockFactory.CreateMockObject(type);
         }
 
         /// <summary>

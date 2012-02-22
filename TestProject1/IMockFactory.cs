@@ -2,7 +2,7 @@
 
 namespace TestProject1
 {
-    public interface MockFactory
+    public interface IMockFactory
     {
         Object CreateMockObject(Type type);
     }
