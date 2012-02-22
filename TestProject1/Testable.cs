@@ -24,7 +24,6 @@ namespace TestProject1
             Instance = (T)ctor.Invoke(constructorInstances.ToArray());
 
             // Inject any dependancies for any property dependancies
-            // Not done yet
             var properties = GetPropertiesFromType();
             CreateInstancesForProperties(properties, dependancies);
             SetPropertyObjects(properties, this.Dependancies);
@@ -120,6 +119,12 @@ namespace TestProject1
             return ctor ?? typeof(T).GetConstructors().First();
         }
 
+        /// <summary>
+        /// Creates and returns mock, concrete, or supplied depenency objects based on type.
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <param name="dependancies"></param>
+        /// <returns></returns>
         public IEnumerable<Object> CreateInstancesOfConstructorParameters(ParameterInfo[] parameters, object[] dependancies)
         {
             foreach (var param in parameters)
