@@ -58,20 +58,31 @@ namespace TestProject1
                 if (param.ParameterType.IsAbstract | param.ParameterType.IsInterface)
                 {
                     // Creates a Mock<T> proxy object and adds it to the returning array.
-                    var mockType = typeof(Moq.Mock<>);
-                    var objType = mockType.MakeGenericType(new Type[] { param.ParameterType });
-                    dynamic obj = Activator.CreateInstance(objType);
-                    this.Dependancies.Add(param.ParameterType, obj.Object);
+                    dynamic obj = CreateMockObjectFromType(param);
                     yield return obj.Object;
                 }
                 else
                 {
                     // Creates the concrete object and adds it to the returning array.
-                    dynamic obj = Activator.CreateInstance(param.ParameterType);
-                    this.Dependancies.Add(param.ParameterType, obj);
-                    yield return obj;
+                    yield return CreateConcreteObjectFromType(param);
                 }
             }
+        }
+
+        private dynamic CreateMockObjectFromType(ParameterInfo param)
+        {
+            var mockType = typeof(Moq.Mock<>);
+            var objType = mockType.MakeGenericType(new Type[] { param.ParameterType });
+            dynamic obj = Activator.CreateInstance(objType);
+            this.Dependancies.Add(param.ParameterType, obj.Object);
+            return obj;
+        }
+
+        private dynamic CreateConcreteObjectFromType(ParameterInfo param)
+        {
+            dynamic obj = Activator.CreateInstance(param.ParameterType);
+            this.Dependancies.Add(param.ParameterType, obj);
+            return obj;
         }
     }
 }
