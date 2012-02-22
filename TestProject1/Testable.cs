@@ -37,7 +37,7 @@ namespace TestProject1
             return ctor ?? typeof(T).GetConstructors().First();
         }
 
-        private IEnumerable<object> CreateInstancesOfConstructorParameters(ParameterInfo[] parameters, object[] dependancies)
+        private IEnumerable<Object> CreateInstancesOfConstructorParameters(ParameterInfo[] parameters, object[] dependancies)
         {
             foreach (var param in parameters)
             {
@@ -58,30 +58,31 @@ namespace TestProject1
                 if (param.ParameterType.IsAbstract | param.ParameterType.IsInterface)
                 {
                     // Creates a Mock<T> proxy object and adds it to the returning array.
-                    dynamic obj = CreateMockObjectFromType(param);
+                    dynamic obj = CreateMockObjectFromType(param.ParameterType);
+                    this.Dependancies.Add(param.ParameterType, obj.Object);
                     yield return obj.Object;
                 }
                 else
                 {
                     // Creates the concrete object and adds it to the returning array.
-                    yield return CreateConcreteObjectFromType(param);
+                    var obj = CreateConcreteObjectFromType(param.ParameterType);
+                    this.Dependancies.Add(param.ParameterType, obj);
+                    yield return obj;
                 }
             }
         }
 
-        private dynamic CreateMockObjectFromType(ParameterInfo param)
+        public dynamic CreateMockObjectFromType(Type type)
         {
             var mockType = typeof(Moq.Mock<>);
-            var objType = mockType.MakeGenericType(new Type[] { param.ParameterType });
+            var objType = mockType.MakeGenericType(new Type[] { type });
             dynamic obj = Activator.CreateInstance(objType);
-            this.Dependancies.Add(param.ParameterType, obj.Object);
             return obj;
         }
 
-        private dynamic CreateConcreteObjectFromType(ParameterInfo param)
+        public dynamic CreateConcreteObjectFromType(Type type)
         {
-            dynamic obj = Activator.CreateInstance(param.ParameterType);
-            this.Dependancies.Add(param.ParameterType, obj);
+            dynamic obj = Activator.CreateInstance(type);
             return obj;
         }
     }
