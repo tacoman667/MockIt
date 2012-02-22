@@ -43,15 +43,15 @@ namespace TestProject1
 
         [TestMethod]
         [TestCategory("unit")]
-        public void it_should_add_objects_to_the_dependancies_propery_of_the_wrapper()
+        public void it_should_add_1_object_to_the_dependancies_propery_of_the_wrapper()
         {
             var testableClass = new Testable<Baz>();
-            testableClass.Dependancies.Count.ShouldBeGreaterThan(0);
+            testableClass.Dependancies.Count.ShouldEqual(1);
         }
 
         [TestMethod]
         [TestCategory("unit")]
-        public void it_should_have_1_dependancy_of_type_IFoo()
+        public void it_should_have_a_dependancy_of_type_IFoo()
         {
             var foo = new Foo { };
             var testableClass = new Testable<Baz>(foo);

@@ -23,16 +23,6 @@ namespace TestProject1
             var objects = CreateInstancesOfConstructorParameters(ctor.GetParameters(), dependancies ?? new object[0]);
             Instance = (T)ctor.Invoke(objects.ToArray());
 
-            objects.ToList().ForEach(item =>
-            {
-                Type type = item.GetType();
-                foreach (var i in type.GetInterfaces())
-                {
-                    this.Dependancies.Add(i, item);
-                }
-
-            });
-
             // Inject any dependancies for any property dependancies
             // Not done yet
             //var properties = typeof(T).GetProperties(BindingFlags.Public & BindingFlags.NonPublic);
@@ -47,7 +37,7 @@ namespace TestProject1
             return ctor ?? typeof(T).GetConstructors().First();
         }
 
-        private static IEnumerable<object> CreateInstancesOfConstructorParameters(ParameterInfo[] parameters, object[] dependancies)
+        private IEnumerable<object> CreateInstancesOfConstructorParameters(ParameterInfo[] parameters, object[] dependancies)
         {
             foreach (var param in parameters)
             {
@@ -57,7 +47,12 @@ namespace TestProject1
                     return d.GetType().GetInterface(interfaceName) != null;
                 };
                 var dependancy = dependancies.Where(d => InterfaceImplimentedCheck(d, param.ParameterType.Name) || InterfaceImplimentedCheck(d, param.ParameterType.FullName)).FirstOrDefault();
-                if (dependancy != null) { yield return dependancy; continue; }
+                if (dependancy != null)
+                {
+                    yield return dependancy;
+                    this.Dependancies.Add(param.ParameterType, dependancy);
+                    continue;
+                }
 
 
                 if (param.ParameterType.IsAbstract | param.ParameterType.IsInterface)
@@ -66,12 +61,14 @@ namespace TestProject1
                     var mockType = typeof(Moq.Mock<>);
                     var objType = mockType.MakeGenericType(new Type[] { param.ParameterType });
                     dynamic obj = Activator.CreateInstance(objType);
+                    this.Dependancies.Add(param.ParameterType, obj.Object);
                     yield return obj.Object;
                 }
                 else
                 {
                     // Creates the concrete object and adds it to the returning array.
                     dynamic obj = Activator.CreateInstance(param.ParameterType);
+                    this.Dependancies.Add(param.ParameterType, obj);
                     yield return obj;
                 }
             }
