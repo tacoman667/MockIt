@@ -74,6 +74,23 @@ namespace TestProject1
             instance.Bar.ShouldNotBeNull();
         }
 
+        [TestMethod]
+        [TestCategory("unit")]
+        public void when_no_ctor_defined_it_should_create_instance()
+        {
+            var instance = new Testable<FooWithoutCtor>(mockFactory).Instance;
+            instance.ShouldNotBeNull();
+        }
+
+        class FooWithoutCtor : IFoo
+        {
+            public string TestMessage
+            {
+                get;
+                set;
+            }
+        }
+
         public interface IFooBar { }
         public class FooBar : IFooBar
         {

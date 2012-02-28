@@ -24,7 +24,7 @@ namespace TestProject1
             // Inject dependacies for any constructors
             var ctor = GetConstructor();
             var constructorInstances = CreateInstancesOfConstructorParameters(ctor.GetParameters(), dependancies ?? new object[0]);
-            Instance = (T)ctor.Invoke(constructorInstances.ToArray());
+            this.Instance = (T)ctor.Invoke(constructorInstances.ToArray());
 
             // Inject any dependancies for any property dependancies
             var properties = GetPropertiesFromType();
@@ -110,7 +110,7 @@ namespace TestProject1
         }
 
         /// <summary>
-        /// Gets the constructor with the most parameters.
+        /// Gets the constructor with the most parameters. If only parameterless constructor exists, it will return it.
         /// </summary>
         /// <returns>ConstructorInfo</returns>
         public static ConstructorInfo GetConstructor()
