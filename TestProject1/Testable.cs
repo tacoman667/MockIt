@@ -53,10 +53,10 @@ namespace TestProject1
                 var type = prop.PropertyType;
 
                 // checks the supplied dependancies array to see if the type was already provided and returns it
-                var dependancy = GetDependancy(type, dependancies);
-                if (dependancy != null)
+                var dependency = Getdependency(type, dependancies);
+                if (dependency != null)
                 {
-                    AddDependancyToCollection(type, dependancy);
+                    AdddependencyToCollection(type, dependency);
                     continue;
                 }
 
@@ -64,13 +64,13 @@ namespace TestProject1
                 {
                     // Creates a Mock<T> proxy object and adds it to the returning array.
                     dynamic obj = CreateMockObjectFromType(type);
-                    AddDependancyToCollection(type, obj.Object);
+                    AdddependencyToCollection(type, obj.Object);
                 }
                 else
                 {
                     // Creates the concrete object and adds it to the returning array.
                     var obj = CreateConcreteObjectFromType(type);
-                    AddDependancyToCollection(type, obj);
+                    AdddependencyToCollection(type, obj);
                 }
             }
         }
@@ -81,7 +81,7 @@ namespace TestProject1
         /// <param name="type"></param>
         /// <param name="dependancies"></param>
         /// <returns></returns>
-        public static object GetDependancy(Type type, object[] dependancies)
+        public static object Getdependency(Type type, object[] dependancies)
         {
             if (dependancies != null)
             {
@@ -90,9 +90,9 @@ namespace TestProject1
                 {
                     return d.GetType().GetInterface(interfaceName) != null;
                 };
-                var dependancy = dependancies.Where(d => InterfaceImplimentedCheck(d, type.Name) || InterfaceImplimentedCheck(d, type.FullName)).FirstOrDefault();
+                var dependency = dependancies.Where(d => InterfaceImplimentedCheck(d, type.Name) || InterfaceImplimentedCheck(d, type.FullName)).FirstOrDefault();
 
-                return dependancy;
+                return dependency;
             }
             return null;
         }
@@ -135,11 +135,11 @@ namespace TestProject1
                 var type = param.ParameterType;
 
                 // checks the supplied dependancies array to see if the type was already provided and returns it
-                var dependancy = GetDependancy(type, dependancies);
-                if (dependancy != null)
+                var dependency = Getdependency(type, dependancies);
+                if (dependency != null)
                 {
-                    yield return dependancy;
-                    AddDependancyToCollection(type, dependancy);
+                    yield return dependency;
+                    AdddependencyToCollection(type, dependency);
                     continue;
                 }
 
@@ -147,23 +147,23 @@ namespace TestProject1
                 {
                     // Creates a Mock<T> proxy object and adds it to the returning array.
                     dynamic obj = CreateMockObjectFromType(type);
-                    AddDependancyToCollection(type, obj.Object);
+                    AdddependencyToCollection(type, obj.Object);
                     yield return obj.Object;
                 }
                 else
                 {
                     // Creates the concrete object and adds it to the returning array.
                     var obj = CreateConcreteObjectFromType(type);
-                    AddDependancyToCollection(type, obj);
+                    AdddependencyToCollection(type, obj);
                     if (obj != null) yield return obj;
                 }
             }
         }
 
-        private void AddDependancyToCollection(Type type, object dependancy)
+        private void AdddependencyToCollection(Type type, object dependency)
         {
-            if (!this.Dependancies.ContainsKey(type) && dependancy != null)
-                this.Dependancies.Add(type, dependancy);
+            if (!this.Dependancies.ContainsKey(type) && dependency != null)
+                this.Dependancies.Add(type, dependency);
         }
 
         /// <summary>

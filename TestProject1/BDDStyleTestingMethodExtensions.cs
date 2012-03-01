@@ -10,24 +10,24 @@ namespace System
         /// Tests if the object or value is null.
         /// </summary>
         /// <param name="context"></param>
-        /// <param name="error"></param>
+        /// <param name="message"></param>
         [DebuggerNonUserCode]
-        public static void ShouldBeNull(this Object context, String error = null)
+        public static void ShouldBeNull(this Object context, String message = null)
         {
-            if (error == null) Assert.IsNull(context);
-            else Assert.IsNull(context, error);
+            if (message == null) Assert.IsNull(context);
+            else Assert.IsNull(context, message);
         }
 
         /// <summary>
         /// Tests if the object or value is not null.
         /// </summary>
         /// <param name="context"></param>
-        /// <param name="error"></param>
+        /// <param name="message"></param>
         [DebuggerNonUserCode]
-        public static void ShouldNotBeNull(this Object context, String error = null)
+        public static void ShouldNotBeNull(this Object context, String message = null)
         {
-            if (error == null) Assert.IsNotNull(context);
-            else Assert.IsNotNull(context, error);
+            if (message == null) Assert.IsNotNull(context);
+            else Assert.IsNotNull(context, message);
         }
 
         /// <summary>
@@ -36,12 +36,12 @@ namespace System
         /// <typeparam name="T"></typeparam>
         /// <param name="context"></param>
         /// <param name="objectToCompare"></param>
-        /// <param name="error"></param>
+        /// <param name="message"></param>
         [DebuggerNonUserCode]
-        public static void ShouldEqual<T>(this T context, T objectToCompare, String error = null)
+        public static void ShouldEqual<T>(this T context, T objectToCompare, String message = null)
         {
-            if (error == null) Assert.AreEqual<T>(objectToCompare, context);
-            else Assert.AreEqual<T>(objectToCompare, context, error);
+            if (message == null) Assert.AreEqual<T>(objectToCompare, context);
+            else Assert.AreEqual<T>(objectToCompare, context, message);
         }
 
         /// <summary>
@@ -50,38 +50,38 @@ namespace System
         /// <typeparam name="T"></typeparam>
         /// <param name="context"></param>
         /// <param name="objectToCompare"></param>
-        /// <param name="error"></param>
+        /// <param name="message"></param>
         [DebuggerNonUserCode]
-        public static void ShouldNotEqual<T>(this T context, T objectToCompare, String error = null)
+        public static void ShouldNotEqual<T>(this T context, T objectToCompare, String message = null)
         {
-            if (error == null) Assert.AreNotEqual<T>(objectToCompare, context);
-            else Assert.AreNotEqual<T>(objectToCompare, context, error);
+            if (message == null) Assert.AreNotEqual<T>(objectToCompare, context);
+            else Assert.AreNotEqual<T>(objectToCompare, context, message);
         }
 
         /// <summary>
         /// Tests if the value is true.
         /// </summary>
         /// <param name="context"></param>
-        /// <param name="error"></param>
+        /// <param name="message"></param>
         [DebuggerNonUserCode]
-        public static void ShouldBeTrue<T>(this T context, String error = null)
+        public static void ShouldBeTrue<T>(this T context, String message = null)
         {
             var value = Convert.ToBoolean(context);
-            if (error == null) Assert.IsTrue(value);
-            else Assert.IsTrue(value, error);
+            if (message == null) Assert.IsTrue(value);
+            else Assert.IsTrue(value, message);
         }
 
         /// <summary>
         /// Tests if the value is not true.
         /// </summary>
         /// <param name="context"></param>
-        /// <param name="error"></param>
+        /// <param name="message"></param>
         [DebuggerNonUserCode]
-        public static void ShouldNotBeTrue<T>(this T context, String error = null)
+        public static void ShouldNotBeTrue<T>(this T context, String message = null)
         {
             var value = Convert.ToBoolean(context);
-            if (error == null) Assert.IsFalse(value);
-            else Assert.IsFalse(value, error);
+            if (message == null) Assert.IsFalse(value);
+            else Assert.IsFalse(value, message);
         }
 
         /// <summary>
@@ -89,12 +89,12 @@ namespace System
         /// </summary>
         /// <param name="context"></param>
         /// <param name="text"></param>
-        /// <param name="error"></param>
+        /// <param name="message"></param>
         [DebuggerNonUserCode]
-        public static void ShouldContain(this String context, String text, String error = null)
+        public static void ShouldContain(this String context, String text, String message = null)
         {
-            if (error == null) Assert.IsTrue(context.Contains(text));
-            else Assert.IsTrue(context.Contains(text), error);
+            if (message == null) Assert.IsTrue(context.Contains(text));
+            else Assert.IsTrue(context.Contains(text), message);
         }
 
         /// <summary>
@@ -102,12 +102,12 @@ namespace System
         /// </summary>
         /// <param name="context"></param>
         /// <param name="text"></param>
-        /// <param name="error"></param>
+        /// <param name="message"></param>
         [DebuggerNonUserCode]
-        public static void ShouldNotContain(this String context, String text, String error = null)
+        public static void ShouldNotContain(this String context, String text, String message = null)
         {
-            if (error == null) Assert.IsFalse(context.Contains(text));
-            else Assert.IsFalse(context.Contains(text), error);
+            if (message == null) Assert.IsFalse(context.Contains(text));
+            else Assert.IsFalse(context.Contains(text), message);
         }
 
         /// <summary>
@@ -115,12 +115,12 @@ namespace System
         /// </summary>
         /// <param name="context"></param>
         /// <param name="type"></param>
-        /// <param name="error"></param>
+        /// <param name="message"></param>
         [DebuggerNonUserCode]
-        public static void ShouldBeInstanceOf(this object context, object type, String error = null)
+        public static void ShouldBeInstanceOf(this object context, object type, String message = null)
         {
             var t = type as Type;
-            Assert.IsInstanceOfType(context, t, error, t);
+            Assert.IsInstanceOfType(context, t, message, t);
         }
 
         /// <summary>
@@ -128,11 +128,11 @@ namespace System
         /// </summary>
         /// <param name="context"></param>
         /// <param name="minimum"></param>
-        /// <param name="error"></param>
+        /// <param name="message"></param>
         [DebuggerNonUserCode]
-        public static void ShouldBeGreaterThan(this int context, int minimum, String error = null)
+        public static void ShouldBeGreaterThan(this int context, int minimum, String message = null)
         {
-            Assert.IsTrue(context > minimum, error);
+            Assert.IsTrue(context > minimum, message);
         }
 
         /// <summary>
@@ -140,11 +140,27 @@ namespace System
         /// </summary>
         /// <param name="context"></param>
         /// <param name="minimum"></param>
-        /// <param name="error"></param>
+        /// <param name="message"></param>
         [DebuggerNonUserCode]
-        public static void ShouldBeLessThan(this int context, int maximum, String error = null)
+        public static void ShouldBeLessThan(this int context, int maximum, String message = null)
         {
-            Assert.IsTrue(context < maximum, error);
+            Assert.IsTrue(context < maximum, message);
+        }
+
+    }
+
+    public static class It
+    {
+        public static void ShouldThrow<T>(Action operation, String message = null)
+        {
+            try
+            {
+                operation.Invoke();
+            }
+            catch (Exception ex)
+            {
+                Assert.IsInstanceOfType(ex, typeof(T), message);
+            }
         }
     }
 }

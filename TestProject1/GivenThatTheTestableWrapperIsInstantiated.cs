@@ -60,7 +60,7 @@ namespace TestProject1
 
         [TestMethod]
         [TestCategory("unit")]
-        public void it_should_have_a_dependancy_of_type_IFoo()
+        public void it_should_have_a_dependency_of_type_IFoo()
         {
             var foo = new Foo { };
             var testableClass = new Testable<Baz>(mockFactory, foo);
@@ -69,7 +69,7 @@ namespace TestProject1
 
         [TestMethod]
         [TestCategory("unit")]
-        public void it_should_create_mock_for_public_property_dependancy()
+        public void it_should_create_mock_for_public_property_dependency()
         {
             var instance = new Testable<FooBar>(mockFactory).Instance;
             instance.Bar.ShouldNotBeNull();
@@ -85,10 +85,9 @@ namespace TestProject1
 
         [TestMethod]
         [TestCategory("unit")]
-        public void MyTestMethod()
+        public void when_dependency_of_concrete_type_has_no_parameterless_constructor_it_should_throw_TypeLoadException()
         {
-            var instance = new Testable<HttpContext>(mockFactory).Instance;
-            instance.ShouldNotBeNull();
+            It.ShouldThrow<TypeLoadException>(() => new Testable<HttpContext>(mockFactory));
         }
 
         class FooWithoutCtor : IFoo
