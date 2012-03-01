@@ -87,7 +87,8 @@ namespace TestProject1
         [TestCategory("unit")]
         public void when_dependency_of_concrete_type_has_no_parameterless_constructor_it_should_throw_TypeLoadException()
         {
-            It.ShouldThrow<TypeLoadException>(() => new Testable<HttpContext>(mockFactory));
+            Action operation = () => new Testable<HttpContext>(mockFactory);
+            operation.ShouldThrow<TypeLoadException>();
         }
 
         class FooWithoutCtor : IFoo

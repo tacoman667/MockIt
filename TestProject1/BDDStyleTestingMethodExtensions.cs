@@ -147,6 +147,10 @@ namespace System
             Assert.IsTrue(context < maximum, message);
         }
 
+        public static void ShouldThrow<T>(this Action operation, String message = null)
+        {
+            It.ShouldThrow<T>(operation, message);
+        }
     }
 
     public static class It
