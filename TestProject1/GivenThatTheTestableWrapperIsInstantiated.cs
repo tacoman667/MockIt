@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Web;
 
 namespace TestProject1
 {
@@ -79,6 +80,14 @@ namespace TestProject1
         public void when_no_ctor_defined_it_should_create_instance()
         {
             var instance = new Testable<FooWithoutCtor>(mockFactory).Instance;
+            instance.ShouldNotBeNull();
+        }
+
+        [TestMethod]
+        [TestCategory("unit")]
+        public void MyTestMethod()
+        {
+            var instance = new Testable<HttpContext>(mockFactory).Instance;
             instance.ShouldNotBeNull();
         }
 

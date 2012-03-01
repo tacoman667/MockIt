@@ -56,7 +56,7 @@ namespace TestProject1
                 var dependancy = GetDependancy(type, dependancies);
                 if (dependancy != null)
                 {
-                    this.Dependancies.Add(type, dependancy);
+                    AddDependancyToCollection(type, dependancy);
                     continue;
                 }
 
@@ -64,13 +64,13 @@ namespace TestProject1
                 {
                     // Creates a Mock<T> proxy object and adds it to the returning array.
                     dynamic obj = CreateMockObjectFromType(type);
-                    this.Dependancies.Add(type, obj.Object);
+                    AddDependancyToCollection(type, obj.Object);
                 }
                 else
                 {
                     // Creates the concrete object and adds it to the returning array.
                     var obj = CreateConcreteObjectFromType(type);
-                    this.Dependancies.Add(type, obj);
+                    AddDependancyToCollection(type, obj);
                 }
             }
         }
@@ -139,7 +139,7 @@ namespace TestProject1
                 if (dependancy != null)
                 {
                     yield return dependancy;
-                    this.Dependancies.Add(type, dependancy);
+                    AddDependancyToCollection(type, dependancy);
                     continue;
                 }
 
@@ -147,17 +147,23 @@ namespace TestProject1
                 {
                     // Creates a Mock<T> proxy object and adds it to the returning array.
                     dynamic obj = CreateMockObjectFromType(type);
-                    this.Dependancies.Add(type, obj.Object);
+                    AddDependancyToCollection(type, obj.Object);
                     yield return obj.Object;
                 }
                 else
                 {
                     // Creates the concrete object and adds it to the returning array.
                     var obj = CreateConcreteObjectFromType(type);
-                    this.Dependancies.Add(type, obj);
-                    yield return obj;
+                    AddDependancyToCollection(type, obj);
+                    if (obj != null) yield return obj;
                 }
             }
+        }
+
+        private void AddDependancyToCollection(Type type, object dependancy)
+        {
+            if (!this.Dependancies.ContainsKey(type) && dependancy != null)
+                this.Dependancies.Add(type, dependancy);
         }
 
         /// <summary>
@@ -177,8 +183,12 @@ namespace TestProject1
         /// <returns>dynamic</returns>
         public dynamic CreateConcreteObjectFromType(Type type)
         {
-            dynamic obj = Activator.CreateInstance(type);
-            return obj;
+            var ctor = type.GetConstructors().FirstOrDefault(c => c.GetParameters().Count() == 0);
+            if (ctor != null)
+            {
+                return ctor.Invoke(null);
+            }
+            throw new TypeLoadException("Could not create typeof(" + type + ") because it doesn't have a default constructor.");
         }
     }
 }
