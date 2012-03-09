@@ -4,3 +4,5 @@ C:\projects\Testable-T-\TestProject1\bin\Debug\TestProject1.pdb
 C:\projects\Testable-T-\TestProject1\obj\Debug\TestProject1.dll
 C:\projects\Testable-T-\TestProject1\obj\Debug\TestProject1.pdb
 C:\projects\Testable-T-\TestProject1\obj\Debug\TestProject1.csprojResolveAssemblyReference.cache
+C:\projects\Testable-T-\TestProject1\bin\Debug\MockIt.dll
+C:\projects\Testable-T-\TestProject1\bin\Debug\MockIt.pdb

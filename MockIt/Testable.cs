@@ -3,20 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace TestProject1
+namespace MockIt
 {
-    public class Testable<T> where T : class
+    public class Testable<T, TMockFactory> where T : class
     {
         public T Instance { get; private set; }
 
         public Dictionary<Type, Object> Dependancies { get; private set; }
         public IMockFactory MockFactory { get; private set; }
 
-        public Testable(IMockFactory mockFactory) : this(mockFactory, null) { }
-
-        public Testable(IMockFactory mockFactory, params object[] dependancies)
+        public Testable(params object[] dependancies)
         {
-            this.MockFactory = mockFactory;
+            this.MockFactory = (IMockFactory)Activator.CreateInstance(typeof(TMockFactory));
 
             // Protects against null errors
             this.Dependancies = new Dictionary<Type, object>();

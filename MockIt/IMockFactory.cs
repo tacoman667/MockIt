@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace TestProject1
+namespace MockIt
 {
     public interface IMockFactory
     {
